@@ -1,0 +1,41 @@
+
+.clear {
+    justify-content:center;
+    align-items: center;
+    justify-items: center;
+    width: 100px;
+    height:40px;
+    margin-left: 305px;
+    background-color: rgb(126, 228, 152);
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+
+
+.row {
+
+   display: flex;
+   flex-direction: row;
+   max-width: 960px;
+   margin-left: 20px;
+   
+}
+
+
+
+.box {
+    display: flex;
+    border-color: black;
+    border: black 1px solid;
+    margin-top: 0;
+    float: left;
+    
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    width: 960px;
+    justify-content: space-around;
+}
