@@ -2,6 +2,8 @@
 // constant variables 
 const container = document.querySelector('.container');
 const btn = document.querySelector('.clear');
+const btnColor = document.querySelector('.color');
+const btnReset = document.querySelector('.reset');
 
 
 function buildGrid (squares) {
@@ -11,8 +13,8 @@ function buildGrid (squares) {
         for (let j = 0; j < squares; j++) {
             let box = document.createElement('div');
             box.classList.add('box');
-            box.style.width = (960 / squares) + "px";
-            box.style.height = (960 / squares) + "px";
+            box.style.width = (450 / squares) + "px";
+            box.style.height = (450 / squares) + "px";
             row.appendChild(box);
         }
         container.appendChild(row);
@@ -21,6 +23,7 @@ function buildGrid (squares) {
    hover();
 }
 
+// removes rows from container so new grid can be generated within container
 function reset() {
     document.querySelectorAll(".row").forEach((e) => e.parentNode.removeChild(e));
   }
@@ -30,19 +33,32 @@ function hover(){
     let hoverBox = document.querySelectorAll('.box');
     hoverBox.forEach(box => {
         box.addEventListener('mouseover', () => {
+            box.style.backgroundColor = "black";
+        });
+    
+    });
+};
+
+// random color generates when mouse hovers
+function hoverColor(){
+    let hoverBox = document.querySelectorAll('.box');
+    hoverBox.forEach(box => {
+        box.addEventListener('mouseover', () => {
             box.style.backgroundColor = randomColor();
         });
+    
     });
 };
 
 
 // random color function
 function randomColor() {
+    for (let i = 0; i < 10; i++) {
     let red = Math.floor(Math.random()* 256);
     let green = Math.floor(Math.random()* 256);
     let blue = Math.floor(Math.random()* 256);
     return "rgb(" + red + "," + green + "," + blue + ")";
-    
+    }
 }
 
 // event listener to create new grid and reset div backgrounds 
@@ -67,6 +83,18 @@ btn.addEventListener('click', () => {
     
 });
 
+// event listener to add random color feature to button
+btnColor.addEventListener('click', () => {
+    hoverColor();
+})
 
-// calls function upon startup to build original 16X16 grid
+
+// reset grid without changing dimension size
+btnReset.addEventListener('click', () => {
+    reset();
+    buildGrid(16);
+})
+
+
+// calls function upon startup to build original 16dX16 grid
 buildGrid(16);
